@@ -128,8 +128,13 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   font-size: clamp(16px, 4.8vw, 22px);
   color:white;
   border:1px solid rgba(255,255,255,.5);
-  box-shadow:0 6px 18px rgba(0,0,0,.5);
-  background:linear-gradient(135deg, var(--yellow), var(--blue));
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  background: linear-gradient(135deg, #1e63e9, #ffc83d);
+  transition:.25s;
+}
+
+.cta:hover{
+  transform:scale(1.04);
 }
 
 .hug{
@@ -150,10 +155,10 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
 .emoji{
   position:absolute;
   top:-120px;
-  font-size:28px;
+  font-size: clamp(22px, 5vw, 36px);
   animation: fallDown linear forwards;
+  opacity:0.95;
 }
-
 @keyframes fallDown{
   to{ transform:translateY(105vh) rotate(220deg); opacity:0; }
 }
@@ -208,7 +213,10 @@ href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20
 </a>
 
 <div class="hug">¡Te esperamos! 🐾</div>
-<div class="big">🎈</div>
+<div class="big">
+  <span>🎈</span>
+  <span>❤️</span>
+</div>
 
 </div>
 
@@ -255,22 +263,36 @@ function triggerMagic(){
   audio.currentTime = 0;
   audio.play().catch(()=>{});
 }
+  function rainEmojis(count){
+  const w = window.innerWidth;
+
+  for(let i=0; i<count; i++){
+    const span = document.createElement('span');
+    span.className = 'emoji';
+    span.textContent = CONFIG.EMOJIS[Math.floor(Math.random() * CONFIG.EMOJIS.length)];
+
+
+    span.style.left = Math.random() * w + 'px';
+
+    const duration = 7 + Math.random() * 6;   // 7–13s
+    span.style.animationDuration = duration + 's';
+
+    const delay = Math.random() * 2.5;        // 0–2.5s
+    span.style.animationDelay = delay + 's';
+
+  
+    span.style.transform = `rotate(${Math.random()*360}deg)`;
+
+    layer.appendChild(span);
+
+    span.addEventListener('animationend', () => span.remove());
+  }
+}
 
 photo.addEventListener('click', triggerMagic);
 tapHint.addEventListener('click', triggerMagic);
 
-function rainEmojis(count){
-  const w = document.body.clientWidth;
-  for(let i=0;i<count;i++){
-    const span = document.createElement('span');
-    span.className='emoji';
-    span.textContent = CONFIG.EMOJIS[Math.floor(Math.random()*CONFIG.EMOJIS.length)];
-    span.style.left = Math.random()*w + 'px';
-    span.style.animationDuration = (5 + Math.random()*4) + 's';
-    layer.appendChild(span);
-    span.addEventListener('animationend', ()=> span.remove());
-  }
-}
+
 </script>
 </body>
 </html>
