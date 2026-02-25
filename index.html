@@ -9,12 +9,6 @@
 <style>
 :root{
   --maxw: 480px;
-  --blue: #0b4dd6;
-  --red: #ff3b30;
-  --yellow: #ffcc00;
-
-  --card: rgba(255,255,255,.72);
-  --text-dark: rgba(0,0,0,.82);
   --shadow: rgba(0,0,0,.25);
 }
 
@@ -28,17 +22,17 @@ body{
   overflow-x:hidden;
   position:relative;
 
-
- background: url("fondo2.jpg") no-repeat center center / cover;
-background-attachment: fixed;
+  background: url("fondo2.jpg") no-repeat center center / cover;
+  background-attachment: fixed;
 }
 
 .page{
   position:relative;
-  padding:18px 16px 120px;
+  padding:18px 16px 130px;
   text-align:center;
 }
 
+/* Badge */
 .badge{
   display:inline-flex;
   align-items:center;
@@ -50,21 +44,53 @@ background-attachment: fixed;
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 20px var(--shadow);
   font-weight:900;
+  color:#fff;
   margin-bottom:10px;
 }
 
+
+.marquee{
+  width:100%;
+  overflow:hidden;
+  margin: 6px auto 2px;
+  padding: 4px 0;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+.marquee-track{
+  display:inline-block;
+  white-space:nowrap;
+  will-change: transform;
+  animation: slide 10s linear infinite;
+}
+.marquee-text{
+  font-weight:1000;
+  font-size: clamp(22px, 7vw, 34px);
+  letter-spacing: .4px;
+  padding: 2px 10px;
+
+  /* multicolor + brillo */
+  background: linear-gradient(90deg, #ff3b30, #ffcc00, #25D366, #4facfe, #a855f7, #ff3b30);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 0 10px rgba(255,255,255,.35);
+}
+@keyframes slide{
+  0%{ transform: translateX(100%); }
+  100%{ transform: translateX(-110%); }
+}
+
+/* Título principal */
 .title{
   margin:.35rem 0;
   font-weight:1000;
   letter-spacing:.6px;
   line-height:1.05;
-  color:white;   /* ✅ AÑADE ESTO */
-
+  color:white;
   -webkit-text-stroke:2px rgba(0,0,0,.35);
-  text-shadow:0 4px 12px rgba(0,0,0,.9);
+  text-shadow:0 4px 12px rgba(0,0,0,.85);
 }
-
-h2.title{ font-size: clamp(20px, 6.5vw, 28px); }
 h1.title{ font-size: clamp(42px, 11vw, 64px); }
 
 .blink{ animation: blinkFade 2.8s ease-in-out infinite; }
@@ -92,7 +118,7 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   object-fit:cover;
 }
 
-
+/* Botón misión */
 .tap-hint{
   display:inline-flex;
   align-items:center;
@@ -111,7 +137,6 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   position:relative;
   overflow:hidden;
 }
-
 .tap-hint::after{
   content:"";
   position:absolute;
@@ -121,71 +146,113 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   animation: shine 2.6s ease-in-out infinite;
   pointer-events:none;
 }
-
 @keyframes shine{
   0%{ transform: translateX(-70%); opacity:.2; }
   50%{ transform: translateX(30%); opacity:.55; }
   100%{ transform: translateX(90%); opacity:.15; }
 }
 
-/* Tarjetas */
+
 .glass{
   margin:18px auto 0;
   padding:16px 14px;
   border-radius:18px;
-
-
-  background: rgba(0,0,0,.45);
+  color:#fff;
   backdrop-filter: blur(10px);
-
   box-shadow: 0 10px 22px rgba(0,0,0,.30);
-  font-weight:900;
+  font-weight:1000;
+  border:1px solid rgba(255,255,255,.22);
 }
 
-/* Cuenta atrás */
+
+.glass-info{
+  background: linear-gradient(135deg, rgba(124,58,237,.55), rgba(2,132,199,.55));
+}
+
+.glass-count{
+  background: linear-gradient(135deg, rgba(34,197,94,.55), rgba(250,204,21,.45));
+}
+
 .count-line{
   font-size: clamp(20px, 6vw, 28px);
-  font-weight:1000;
+  font-weight:1100;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 
+/* Botones redondos */
 .cta{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-
   margin:14px auto 0;
   padding:15px 18px;
   width:90%;
-
-  border-radius:999px;   
+  border-radius:999px;
   font-weight:1000;
   text-decoration:none;
   font-size: clamp(16px, 4.8vw, 22px);
-
   color:white;
   border:2px solid rgba(255,255,255,.75);
   box-shadow: 0 10px 22px rgba(0,0,0,.35);
-
   transition:.25s;
 }
+.cta:hover{ transform:scale(1.05); }
+.cta:active{ transform:scale(0.98); }
 
-.cta:hover{
-  transform:scale(1.05);
-}
-.cta-map{
-  background: linear-gradient(135deg, #4facfe, #007aff);
-}
-
-.cta-wa{
-  background: linear-gradient(135deg, #25D366, #128C7E);
-}
+.cta-map{ background: linear-gradient(135deg, #4facfe, #007aff); }
+.cta-wa { background: linear-gradient(135deg, #25D366, #128C7E); }
 
 .hug{
   margin-top:18px;
   font-size:22px;
   font-weight:1000;
+  color:#fff;
   text-shadow: 0 3px 10px rgba(0,0,0,.35);
+}
+
+ 
+.sticker{
+  width: fit-content;
+  margin: 10px auto 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,.28);
+}
+
+.big{
+  font-size:64px;
+  line-height:1;
+  text-shadow: 0 8px 20px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.big .balloon{
+  display:inline-block;
+  animation: balloonFloat 2.4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
+@keyframes balloonFloat{
+  0%   { transform: translateY(0) rotate(-2deg); }
+  50%  { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(-2deg); }
+}
+
+.big .heart{
+  display:inline-block;
+  animation: heartBeat 1.15s ease-in-out infinite;
+}
+@keyframes heartBeat{
+  0%{ transform:scale(.92); }
+  50%{ transform:scale(1.18); }
+  100%{ transform:scale(.92); }
 }
 
 /* Confeti */
@@ -209,25 +276,7 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   to{ transform:translateY(105vh) rotate(220deg); opacity:0; }
 }
 
-/* Globo + corazón */
-.big{
-  font-size:70px;
-  margin-top:6px;
-  text-shadow: 0 8px 20px rgba(0,0,0,.25);
-}
-
-.big span{ margin:0 6px; display:inline-block; }
-
-.big span:last-child{
-  animation: heartBeat 1.15s ease-in-out infinite;
-}
-@keyframes heartBeat{
-  0%{ transform:scale(.92); }
-  50%{ transform:scale(1.18); }
-  100%{ transform:scale(.92); }
-}
-
-/* Pequeño ajuste en móviles */
+/* Móvil */
 @media (max-width: 380px){
   .photo-wrap{ width:180px; height:180px; }
 }
@@ -239,7 +288,13 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
 
   <div class="badge">🐾 Misión: Cumpleaños 🚨</div>
 
-  <h2 class="title">¡Te invito a mi fiesta!</h2>
+  <!-- Marquesina con brillo y movimiento -->
+  <div class="marquee" aria-label="Te invito a mi fiesta">
+    <div class="marquee-track">
+      <span class="marquee-text">✨ ¡Te invito a mi fiesta! ✨ &nbsp;&nbsp; 🐾🎉 🎂🎈 &nbsp;&nbsp; ✨ ¡Te invito a mi fiesta! ✨</span>
+    </div>
+  </div>
+
   <h1 class="title blink">OLIVER CUMPLE 3 AÑOS</h1>
 
   <div class="photo-wrap" id="photo">
@@ -248,14 +303,14 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
 
   <button class="tap-hint" id="tapHint">🚨🐾 ¡Pulsa aquí para activar la misión! 🎉</button>
 
-  <div class="glass">
+  <div class="glass glass-info">
     📅 22 de marzo de 2026<br>
     🕔 17:00 h<br>
     📍 Parque de bolas <b>Bola Loca</b><br>
     Bollullos de la Mitación
   </div>
 
-  <div class="glass">
+  <div class="glass glass-count">
     <div id="countdown" class="count-line">⏳ Faltan …</div>
     🥳 ¡Habrá juegos, risas y merienda! 🎂
   </div>
@@ -266,14 +321,18 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   </a>
 
   <a class="cta cta-wa" target="_blank" rel="noopener"
-     href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Oliver%20%F0%9F%8E%89">
+     href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Óliver%20%F0%9F%8E%89">
     💬 Confirmar por WhatsApp
   </a>
 
   <div class="hug">¡Te esperamos! 🐾</div>
-  <div class="big">
-    <span>🎈</span>
-    <span>❤️</span>
+
+  <!-- Fondo para globo/corazón -->
+  <div class="sticker" aria-label="Globo y corazón">
+    <div class="big">
+      <span class="balloon">🎈</span>
+      <span class="heart">❤️</span>
+    </div>
   </div>
 
 </div>
@@ -287,8 +346,8 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
 <script>
 const CONFIG = {
   targetISO: "2026-03-22T17:00:00",
-  EMOJIS: ["🎉","🎊","🎂","🎈","🎁","🥳","🐾","🦴"],
-  burstCount: 90
+  EMOJIS: ["🎉","🎊","🎂","🎈","🎁","🥳","🐾","🦴","✨"],
+  burstCount: 95
 };
 
 // Cuenta atrás
@@ -334,17 +393,18 @@ function rainEmojis(count){
     span.className = 'emoji';
     span.textContent = CONFIG.EMOJIS[Math.floor(Math.random() * CONFIG.EMOJIS.length)];
 
+    // Disperso por todo el ancho
     span.style.left = (Math.random() * w) + 'px';
 
-
+    // Más lento
     const duration = 7 + Math.random() * 6;   // 7–13s
     span.style.animationDuration = duration + 's';
 
-    
+    // Escalonado
     const delay = Math.random() * 2.5;        // 0–2.5s
     span.style.animationDelay = delay + 's';
 
-    
+    // Rotación variada
     span.style.transform = `rotate(${Math.random()*360}deg)`;
 
     layer.appendChild(span);
