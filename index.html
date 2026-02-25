@@ -12,28 +12,26 @@
   --blue: #0b4dd6;
   --red: #ff3b30;
   --yellow: #ffcc00;
-  --glass: rgba(0,0,0,.35);
+
+  --card: rgba(255,255,255,.72);
+  --text-dark: rgba(0,0,0,.82);
+  --shadow: rgba(0,0,0,.25);
 }
+
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
   font-family:'Segoe UI', system-ui, sans-serif;
   max-width:var(--maxw);
   margin:0 auto;
-  color:white;
-  background:url("fondo1.jpg") no-repeat center top / cover;
   overflow-x:hidden;
   position:relative;
-}
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  max-width:var(--maxw);
-  margin:0 auto;
-  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.75));
-  pointer-events:none;
+
+  background: url("fondo1.jpg") no-repeat center top / contain;
+  background-color: #0b4dd6; /* relleno si sobran bandas */
+  color:#fff;
 }
 
 .page{
@@ -43,12 +41,15 @@ body::before{
 }
 
 .badge{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
   padding:10px 16px;
   border-radius:999px;
-  background:rgba(255,255,255,.15);
-  border:2px solid rgba(255,255,255,.5);
-  backdrop-filter: blur(8px);
+  background:rgba(255,255,255,.22);
+  border:2px solid rgba(255,255,255,.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 20px var(--shadow);
   font-weight:900;
   margin-bottom:10px;
 }
@@ -58,31 +59,32 @@ body::before{
   font-weight:1000;
   letter-spacing:.6px;
   line-height:1.05;
-  -webkit-text-stroke:2px rgba(0,0,0,.35);
-  text-shadow:0 4px 12px rgba(0,0,0,.9);
+
+  -webkit-text-stroke: 2px rgba(0,0,0,.35);
+  text-shadow: 0 4px 12px rgba(0,0,0,.55);
 }
 
 h2.title{ font-size: clamp(20px, 6.5vw, 28px); }
 h1.title{ font-size: clamp(42px, 11vw, 64px); }
 
-.blink{
-  animation: blinkFade 2.5s ease-in-out infinite;
-}
+.blink{ animation: blinkFade 2.8s ease-in-out infinite; }
 @keyframes blinkFade{
   0%,20%{opacity:1}
-  40%{opacity:.2}
+  40%{opacity:.22}
   60%{opacity:1}
 }
 
+/* Foto */
 .photo-wrap{
   width:200px;
   height:200px;
-  margin:14px auto 8px;
+  margin:14px auto 10px;
   border-radius:50%;
   overflow:hidden;
   cursor:pointer;
-  border:6px solid white;
-  box-shadow:0 12px 26px rgba(0,0,0,.6);
+  border:7px solid rgba(255,255,255,.95);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+  background: rgba(255,255,255,.15);
 }
 .photo-wrap img{
   width:100%;
@@ -90,59 +92,100 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   object-fit:cover;
 }
 
+
 .tap-hint{
-  margin-top:8px;
-  padding:10px 18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:6px;
+  padding:12px 18px;
   border-radius:999px;
-  border:2px solid white;
-  font-weight:900;
-  background:linear-gradient(135deg, var(--red), var(--blue));
+  border:2px solid rgba(255,255,255,.95);
+  font-weight:1000;
+  font-size: clamp(14px, 4vw, 16px);
   color:white;
   cursor:pointer;
-  box-shadow:0 6px 14px rgba(0,0,0,.5);
+  background: linear-gradient(135deg, #ff3b30, #0b4dd6);
+  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
 }
 
+.tap-hint::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(circle, rgba(255,255,255,.45), transparent 60%);
+  transform: translateX(-60%);
+  animation: shine 2.6s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes shine{
+  0%{ transform: translateX(-70%); opacity:.2; }
+  50%{ transform: translateX(30%); opacity:.55; }
+  100%{ transform: translateX(90%); opacity:.15; }
+}
+
+/* Tarjetas */
 .glass{
   margin:18px auto 0;
   padding:16px 14px;
   border-radius:18px;
-  background:var(--glass);
+
+
+  background: rgba(0,0,0,.45);
   backdrop-filter: blur(10px);
-  box-shadow:0 8px 20px rgba(0,0,0,.5);
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.30);
   font-weight:900;
 }
 
+/* Cuenta atrás */
 .count-line{
   font-size: clamp(20px, 6vw, 28px);
   font-weight:1000;
 }
 
+
 .cta{
-  display:block;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
   margin:14px auto 0;
-  padding:14px;
+  padding:14px 16px;
   width:90%;
   border-radius:16px;
   font-weight:1000;
   text-decoration:none;
   font-size: clamp(16px, 4.8vw, 22px);
   color:white;
-  border:1px solid rgba(255,255,255,.5);
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  background: linear-gradient(135deg, #1e63e9, #ffc83d);
-  transition:.25s;
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 10px 22px rgba(0,0,0,.30);
+  transition: transform .2s ease, filter .2s ease;
 }
 
-.cta:hover{
-  transform:scale(1.04);
+.cta:hover{ transform: translateY(-2px) scale(1.02); filter: brightness(1.03); }
+
+.cta-map{
+  background: linear-gradient(135deg, #1e63e9, #64b5ff);
+}
+
+.cta-wa{
+  background: linear-gradient(135deg, #25D366, #128C7E);
 }
 
 .hug{
   margin-top:18px;
   font-size:22px;
   font-weight:1000;
+  text-shadow: 0 3px 10px rgba(0,0,0,.35);
 }
 
+/* Confeti */
 .emoji-layer{
   position:fixed;
   inset:0;
@@ -151,27 +194,39 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
   pointer-events:none;
   overflow:hidden;
 }
-
 .emoji{
   position:absolute;
   top:-120px;
   font-size: clamp(22px, 5vw, 36px);
   animation: fallDown linear forwards;
   opacity:0.95;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.35));
 }
 @keyframes fallDown{
   to{ transform:translateY(105vh) rotate(220deg); opacity:0; }
 }
 
+/* Globo + corazón */
 .big{
   font-size:70px;
   margin-top:6px;
-  animation: pulse 1.2s infinite;
+  text-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
-@keyframes pulse{
-  0%{transform:scale(.9)}
-  50%{transform:scale(1.1)}
-  100%{transform:scale(.9)}
+
+.big span{ margin:0 6px; display:inline-block; }
+
+.big span:last-child{
+  animation: heartBeat 1.15s ease-in-out infinite;
+}
+@keyframes heartBeat{
+  0%{ transform:scale(.92); }
+  50%{ transform:scale(1.18); }
+  100%{ transform:scale(.92); }
+}
+
+/* Pequeño ajuste en móviles */
+@media (max-width: 380px){
+  .photo-wrap{ width:180px; height:180px; }
 }
 </style>
 </head>
@@ -179,50 +234,50 @@ h1.title{ font-size: clamp(42px, 11vw, 64px); }
 <body>
 <div class="page">
 
-<div class="badge">🐾 Misión: Cumpleaños 🚨</div>
+  <div class="badge">🐾 Misión: Cumpleaños 🚨</div>
 
-<h2 class="title">¡Te invito a mi fiesta!</h2>
-<h1 class="title blink">OLIVER CUMPLE 3 AÑOS</h1>
+  <h2 class="title">¡Te invito a mi fiesta!</h2>
+  <h1 class="title blink">OLIVER CUMPLE 3 AÑOS</h1>
 
-<div class="photo-wrap" id="photo">
-  <img src="OLIVER.jpg.jpeg" alt="Foto de Oliver">
-</div>
+  <div class="photo-wrap" id="photo">
+    <img src="OLIVER.jpg.jpeg" alt="Foto de Oliver">
+  </div>
 
-<button class="tap-hint" id="tapHint">👉 ¡Pincha aquí para activar la misión! 🎉</button>
+  <button class="tap-hint" id="tapHint">🚨🐾 ¡Activa la misión! 🎉</button>
 
-<div class="glass">
-📅 22 de marzo de 2026<br>
-🕔 17:00 h<br>
-📍 Parque de bolas <b>Bola Loca</b><br>
-Bollullos de la Mitación
-</div>
+  <div class="glass">
+    📅 22 de marzo de 2026<br>
+    🕔 17:00 h<br>
+    📍 Parque de bolas <b>Bola Loca</b><br>
+    Bollullos de la Mitación
+  </div>
 
-<div class="glass">
-<div id="countdown" class="count-line">⏳ Faltan …</div>
-🥳 ¡Habrá juegos, risas y merienda! 🎂
-</div>
+  <div class="glass">
+    <div id="countdown" class="count-line">⏳ Faltan …</div>
+    🥳 ¡Habrá juegos, risas y merienda! 🎂
+  </div>
 
-<a class="cta" target="_blank"
-href="https://www.google.com/maps/search/?api=1&query=Parque%20de%20bolas%20Bola%20Loca%20Bollullos%20de%20la%20Mitaci%C3%B3n">
-📍 Abrir ubicación
-</a>
+  <a class="cta cta-map" target="_blank" rel="noopener"
+     href="https://www.google.com/maps/search/?api=1&query=Parque%20de%20bolas%20Bola%20Loca%20Bollullos%20de%20la%20Mitaci%C3%B3n">
+    📍 Abrir ubicación
+  </a>
 
-<a class="cta" target="_blank"
-href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Oliver%20🎉">
-💬 Confirmar asistencia
-</a>
+  <a class="cta cta-wa" target="_blank" rel="noopener"
+     href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Oliver%20%F0%9F%8E%89">
+    💬 Confirmar por WhatsApp
+  </a>
 
-<div class="hug">¡Te esperamos! 🐾</div>
-<div class="big">
-  <span>🎈</span>
-  <span>❤️</span>
-</div>
+  <div class="hug">¡Te esperamos! 🐾</div>
+  <div class="big">
+    <span>🎈</span>
+    <span>❤️</span>
+  </div>
 
 </div>
 
 <div class="emoji-layer" id="emojiLayer"></div>
 
-<audio id="voice">
+<audio id="voice" preload="auto">
   <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
@@ -230,9 +285,10 @@ href="https://wa.me/34675311350?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20
 const CONFIG = {
   targetISO: "2026-03-22T17:00:00",
   EMOJIS: ["🎉","🎊","🎂","🎈","🎁","🥳","🐾","🦴"],
-  burstCount: 80
+  burstCount: 90
 };
 
+// Cuenta atrás
 const countdownEl = document.getElementById("countdown");
 const targetDate = new Date(CONFIG.targetISO);
 
@@ -253,6 +309,7 @@ function updateCountdown(){
 const timer=setInterval(updateCountdown,1000);
 updateCountdown();
 
+// Confeti + audio
 const layer = document.getElementById('emojiLayer');
 const photo = document.getElementById('photo');
 const tapHint = document.getElementById('tapHint');
@@ -260,10 +317,13 @@ const audio = document.getElementById('voice');
 
 function triggerMagic(){
   rainEmojis(CONFIG.burstCount);
-  audio.currentTime = 0;
-  audio.play().catch(()=>{});
+  try{
+    audio.currentTime = 0;
+    audio.play().catch(()=>{});
+  }catch(e){}
 }
-  function rainEmojis(count){
+
+function rainEmojis(count){
   const w = window.innerWidth;
 
   for(let i=0; i<count; i++){
@@ -271,28 +331,26 @@ function triggerMagic(){
     span.className = 'emoji';
     span.textContent = CONFIG.EMOJIS[Math.floor(Math.random() * CONFIG.EMOJIS.length)];
 
+    span.style.left = (Math.random() * w) + 'px';
 
-    span.style.left = Math.random() * w + 'px';
 
     const duration = 7 + Math.random() * 6;   // 7–13s
     span.style.animationDuration = duration + 's';
 
+    
     const delay = Math.random() * 2.5;        // 0–2.5s
     span.style.animationDelay = delay + 's';
 
-  
+    
     span.style.transform = `rotate(${Math.random()*360}deg)`;
 
     layer.appendChild(span);
-
     span.addEventListener('animationend', () => span.remove());
   }
 }
 
 photo.addEventListener('click', triggerMagic);
 tapHint.addEventListener('click', triggerMagic);
-
-
 </script>
 </body>
 </html>
