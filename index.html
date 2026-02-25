@@ -3,276 +3,275 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<meta name="theme-color" content="#ff3b30" />
-<title>Invitación Patrulla – Oliver 3 años</title>
+<meta name="theme-color" content="#0b4dd6" />
+<title>Invitación – Oliver 3 años</title>
 
 <style>
-  :root{
-    --maxw: 480px;
+:root{
+  --maxw: 480px;
+  --blue: #0b4dd6;
+  --red: #ff3b30;
+  --yellow: #ffcc00;
+  --glass: rgba(0,0,0,.35);
+}
 
-    /* Paleta “rescate” (inspiración patrulla, sin logos) */
-    --red: #ff3b30;
-    --blue:#007aff;
-    --yellow:#ffcc00;
-    --glass: rgba(255,255,255,.14);
-    --shadow: rgba(0,0,0,.35);
-  }
+body{
+  margin:0;
+  font-family:'Segoe UI', system-ui, sans-serif;
+  max-width:var(--maxw);
+  margin:0 auto;
+  color:white;
+  background:url("FONDO_PATRULLA.png") no-repeat center top / cover;
+  overflow-x:hidden;
+  position:relative;
+}
 
-  body{
-    margin:0;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: url("FONDO_PATRULLA.png") no-repeat center top / cover; /* ✅ cambia si quieres */
-    color:#fff;
-    max-width:var(--maxw);
-    margin:0 auto;
-    overflow-x:hidden;
-  }
+/* ✅ Oscurece fondo para que TODO se lea */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  max-width:var(--maxw);
+  margin:0 auto;
+  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.75));
+  pointer-events:none;
+}
 
-  .page{ padding:18px 16px 120px; text-align:center; }
+.page{
+  position:relative;
+  padding:18px 16px 120px;
+  text-align:center;
+}
 
-  .badge{
-    display:inline-flex; gap:8px; align-items:center; justify-content:center;
-    padding:10px 14px;
-    border-radius:999px;
-    background: rgba(0,0,0,.25);
-    border: 2px solid rgba(255,255,255,.7);
-    box-shadow: 0 8px 18px rgba(0,0,0,.25);
-    font-weight:900;
-    letter-spacing:.3px;
-    margin: 6px auto 12px;
-  }
+.badge{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:2px solid rgba(255,255,255,.5);
+  backdrop-filter: blur(8px);
+  font-weight:900;
+  margin-bottom:10px;
+}
 
-  .title-glow{
-    margin:.25rem 0;
-    font-weight:1000;
-    letter-spacing:.6px;
-    line-height:1.04;
-    color:#fff;
-    -webkit-text-stroke: 1.8px rgba(0,0,0,.18);
-    text-shadow:
-      0 2px 4px rgba(0,0,0,.35),
-      0 0 14px rgba(0,122,255,.85),
-      0 0 22px rgba(255,204,0,.85);
-    animation: glowPulse 2.6s ease-in-out infinite;
-  }
+.title{
+  margin:.35rem 0;
+  font-weight:1000;
+  letter-spacing:.6px;
+  line-height:1.05;
+  -webkit-text-stroke:2px rgba(0,0,0,.35);
+  text-shadow:0 4px 12px rgba(0,0,0,.9);
+}
 
-  h1.title-glow{ font-size: clamp(40px, 10vw, 60px); }
-  h2.title-glow{ font-size: clamp(20px, 6.5vw, 28px); }
+h2.title{ font-size: clamp(20px, 6.5vw, 28px); }
+h1.title{ font-size: clamp(42px, 11vw, 64px); }
 
-  @keyframes glowPulse {
-    0%   { text-shadow:0 0 10px rgba(0,122,255,.65),0 0 18px rgba(255,204,0,.55),0 2px 4px rgba(0,0,0,.35); }
-    50%  { text-shadow:0 0 16px rgba(0,122,255,1),0 0 34px rgba(255,204,0,1),0 2px 6px rgba(0,0,0,.35); }
-    100% { text-shadow:0 0 10px rgba(0,122,255,.65),0 0 18px rgba(255,204,0,.55),0 2px 4px rgba(0,0,0,.35); }
-  }
+.blink{
+  animation: blinkFade 2.5s ease-in-out infinite;
+}
+@keyframes blinkFade{
+  0%,20%{opacity:1}
+  40%{opacity:.2}
+  60%{opacity:1}
+}
 
-  .blink{ animation: blinkFade 2.5s ease-in-out infinite; }
-  @keyframes blinkFade { 0%,20%{opacity:1} 40%{opacity:.15} 60%{opacity:1} 100%{opacity:1} }
+.photo-wrap{
+  width:200px;
+  height:200px;
+  margin:14px auto 8px;
+  border-radius:50%;
+  overflow:hidden;
+  cursor:pointer;
+  border:6px solid white;
+  box-shadow:0 12px 26px rgba(0,0,0,.6);
+}
+.photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-  .photo-wrap{
-    width:200px; height:200px;
-    margin:14px auto 8px; border-radius:50%;
-    overflow:hidden; cursor:pointer;
-    border:6px solid #fff;
-    box-shadow: 0 10px 24px rgba(0,0,0,.4),
-                0 0 0 6px rgba(255,204,0,.35),
-                0 0 26px rgba(0,122,255,.85);
-  }
-  .photo-wrap img{ width:100%; height:100%; object-fit:cover; }
+.tap-hint{
+  margin-top:8px;
+  padding:10px 18px;
+  border-radius:999px;
+  border:2px solid white;
+  font-weight:900;
+  background:linear-gradient(135deg, var(--red), var(--blue));
+  color:white;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(0,0,0,.5);
+}
 
-  .tap-hint{
-    display:inline-block;
-    margin:8px auto 12px;
-    font-weight:1000;
-    font-size:clamp(12px,3.6vw,15px);
-    color:#fff;
-    padding:9px 14px;
-    border-radius:999px;
-    background: linear-gradient(135deg, rgba(255,59,48,.95), rgba(0,122,255,.95));
-    border:2px solid rgba(255,255,255,.95);
-    text-shadow:0 2px 4px rgba(0,0,0,.65);
-    box-shadow:0 6px 14px rgba(0,0,0,.45), 0 0 12px rgba(255,255,255,.55);
-    animation: pulse 1.6s ease-in-out infinite;
-    user-select:none;
-    cursor:pointer;
-  }
-  @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
+.glass{
+  margin:18px auto 0;
+  padding:16px 14px;
+  border-radius:18px;
+  background:var(--glass);
+  backdrop-filter: blur(10px);
+  box-shadow:0 8px 20px rgba(0,0,0,.5);
+  font-weight:900;
+}
 
-  .glass{
-    margin:18px auto 0;
-    padding:16px 14px;
-    border-radius:18px;
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 22px var(--shadow), inset 0 1px 0 rgba(255,255,255,.4);
-    font-weight:900;
-  }
-  .count-line{ font-size: clamp(20px, 6vw, 28px); font-weight:1000; }
+.count-line{
+  font-size: clamp(20px, 6vw, 28px);
+  font-weight:1000;
+}
 
-  .cta{
-    display:block;
-    margin:14px auto 0;
-    padding:14px 18px;
-    width:90%;
-    border-radius:16px;
-    font-weight:1000;
-    text-decoration:none;
-    font-size: clamp(16px, 4.8vw, 22px);
-    color:#fff;
-    text-shadow:0 2px 6px rgba(0,0,0,.6);
-    border:1px solid rgba(255,255,255,0.45);
-    box-shadow:0 8px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.6);
-    background: linear-gradient(135deg, rgba(255,204,0,.95) 0%, rgba(0,122,255,.95) 55%, rgba(255,59,48,.95) 100%);
-  }
+.cta{
+  display:block;
+  margin:14px auto 0;
+  padding:14px;
+  width:90%;
+  border-radius:16px;
+  font-weight:1000;
+  text-decoration:none;
+  font-size: clamp(16px, 4.8vw, 22px);
+  color:white;
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 6px 18px rgba(0,0,0,.5);
+  background:linear-gradient(135deg, var(--yellow), var(--blue));
+}
 
-  .hug{ margin-top:18px; font-size:clamp(18px, 5vw, 24px); font-weight:1000; }
-  .hug-text{
-    color:#fff;
-    -webkit-text-stroke:1px rgba(0,0,0,.15);
-    text-shadow: 0 0 10px rgba(0,122,255,.75), 0 0 16px rgba(255,204,0,.75);
-    letter-spacing:.4px;
-  }
+.hug{
+  margin-top:18px;
+  font-size:22px;
+  font-weight:1000;
+}
 
-  .big-heart{
-    margin-top:8px;
-    font-size:clamp(42px, 14vw, 88px);
-    animation: heartThump 1.2s ease-in-out infinite;
-    text-shadow:0 0 16px rgba(255,255,255,.5), 0 8px 20px rgba(0,0,0,.35);
-  }
-  @keyframes heartThump{ 0%{transform:scale(.92)}50%{transform:scale(1.1)}100%{transform:scale(.92)} }
+.emoji-layer{
+  position:fixed;
+  inset:0;
+  max-width:var(--maxw);
+  margin:0 auto;
+  pointer-events:none;
+  overflow:hidden;
+}
 
-  /* Confeti emojis */
-  .emoji-layer{ position:fixed; inset:0; max-width:var(--maxw); margin:0 auto; pointer-events:none; overflow:hidden; }
-  .emoji{
-    position:absolute; top:-120px;
-    font-size:clamp(22px, 6.2vw, 40px);
-    filter: drop-shadow(0 3px 6px rgba(0,0,0,.55));
-    will-change: transform, opacity;
-  }
-  @keyframes fallDown{
-    0%   { transform: translateY(-120px) rotate(var(--r,0deg)); opacity:0; }
-    10%  { opacity:1; }
-    100% { transform: translateY(105vh) rotate(calc(var(--r,0deg) + 240deg)); opacity:0; }
-  }
+.emoji{
+  position:absolute;
+  top:-120px;
+  font-size:28px;
+  animation: fallDown linear forwards;
+}
+
+@keyframes fallDown{
+  to{ transform:translateY(105vh) rotate(220deg); opacity:0; }
+}
+
+.big{
+  font-size:70px;
+  margin-top:6px;
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(.9)}
+  50%{transform:scale(1.1)}
+  100%{transform:scale(.9)}
+}
 </style>
 </head>
 
 <body>
-  <div class="page">
+<div class="page">
 
-    <div class="badge">🐾 Misión: Cumpleaños 🚨</div>
+<div class="badge">🐾 Misión: Cumpleaños 🚨</div>
 
-    <h2 class="title-glow">¡Te invito a mi fiesta!</h2>
-    <h1 class="title-glow blink">OLIVER CUMPLE 3 AÑOS</h1>
+<h2 class="title">¡Te invito a mi fiesta!</h2>
+<h1 class="title blink">OLIVER CUMPLE 3 AÑOS</h1>
 
-    <div class="photo-wrap" id="photo" role="button" aria-label="Activar confeti y sonido">
-      <!-- ✅ Cambia la foto -->
-      <img src="OLIVER.jpg" alt="Foto de Oliver" />
-    </div>
+<div class="photo-wrap" id="photo">
+  <img src="OLIVER.jpg.jpeg" alt="Foto de Oliver">
+</div>
 
-    <button id="tapHint" class="tap-hint" type="button">👉 ¡Toca aquí para la magia! Sonido ON 🎉</button>
+<button class="tap-hint" id="tapHint">👉 ¡Toca aquí para la magia! 🎉</button>
 
-    <div class="glass">
-      📅 <time datetime="2026-03-22">22 de marzo de 2026</time><br>
-      🕔 17:00 h<br>
-      📍 <strong>Parque de bolas Bola Loca</strong><br>
-      Bollullos de la Mitación
-    </div>
+<div class="glass">
+📅 22 de marzo de 2026<br>
+🕔 17:00 h<br>
+📍 Parque de bolas <b>Bola Loca</b><br>
+Bollullos de la Mitación
+</div>
 
-    <div class="glass">
-      <div id="countdown" class="count-line">⏳ Faltan …</div>
-      🥳 ¡Habrá juegos, risas y merienda! 🎂
-    </div>
+<div class="glass">
+<div id="countdown" class="count-line">⏳ Faltan …</div>
+🥳 ¡Habrá juegos, risas y merienda! 🎂
+</div>
 
-    <a class="cta" href="https://www.google.com/maps/search/?api=1&query=Parque%20de%20bolas%20Bola%20Loca%20Bollullos%20de%20la%20Mitaci%C3%B3n" target="_blank" rel="noopener">📍 Abrir ubicación</a>
+<a class="cta" target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Parque%20de%20bolas%20Bola%20Loca%20Bollullos%20de%20la%20Mitaci%C3%B3n">
+📍 Abrir ubicación
+</a>
 
-    <!-- ✅ Cambia TU_NUMERO (con prefijo país, sin +). Ejemplo: 346XXXXXXXX -->
-    <a class="cta" href="https://wa.me/34TU_NUMERO?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Oliver%20%F0%9F%90%BE%F0%9F%8E%89" target="_blank" rel="noopener">💬 Confirmar por WhatsApp</a>
+<a class="cta" target="_blank"
+href="https://wa.me/34TU_NUMERO?text=%C2%A1Hola!%20Confirmo%20asistencia%20al%20cumple%20de%20Oliver%20🎉">
+💬 Confirmar asistencia
+</a>
 
-    <div class="hug"><span class="hug-text">¡Te esperamos! 🐾</span></div>
-    <div class="big-heart">🚓🚒</div>
-  </div>
+<div class="hug">¡Te esperamos! 🐾</div>
+<div class="big">🎈</div>
 
-  <div class="emoji-layer" id="emojiLayer" aria-hidden="true"></div>
+</div>
 
-  <!-- ✅ Cambia el audio -->
-  <audio id="voice" preload="auto">
-    <source src="AUDIO.mp3" type="audio/mpeg">
-  </audio>
+<div class="emoji-layer" id="emojiLayer"></div>
+
+<audio id="voice">
+  <source src="audio.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-  const CONFIG = {
-    targetISO: "2026-03-22T17:00:00",
-    EMOJIS: ["🎉","🎊","🎂","🧁","🍰","🎈","🎁","🥳","✨","🐾","🦴","🚨","🚒","🚓","⭐","🎀"],
-    burstCount: 80
-  };
+const CONFIG = {
+  targetISO: "2026-03-22T17:00:00",
+  EMOJIS: ["🎉","🎊","🎂","🎈","🎁","🥳","🐾","🦴"],
+  burstCount: 80
+};
 
-  // Cuenta atrás
-  const countdownEl = document.getElementById("countdown");
-  const targetDate = new Date(CONFIG.targetISO);
-  function updateCountdown(){
-    const now = new Date();
-    const diff = targetDate - now;
-    if(diff <= 0){ countdownEl.textContent = "🎉 ¡Ya empezó la fiesta! 🎉"; clearInterval(timer); return; }
-    const d = Math.floor(diff/(1000*60*60*24));
-    const h = Math.floor((diff/(1000*60*60))%24);
-    const m = Math.floor((diff/(1000*60))%60);
-    const s = Math.floor((diff/1000)%60);
-    countdownEl.textContent = `⏳ Faltan ${d}d ${h}h ${m}m ${s}s`;
+const countdownEl = document.getElementById("countdown");
+const targetDate = new Date(CONFIG.targetISO);
+
+function updateCountdown(){
+  const now = new Date();
+  const diff = targetDate - now;
+  if(diff <= 0){
+    countdownEl.textContent = "🎉 ¡Ya empezó la fiesta! 🎉";
+    clearInterval(timer);
+    return;
   }
-  const timer=setInterval(updateCountdown,1000); updateCountdown();
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/(1000*60))%60);
+  const s = Math.floor((diff/1000)%60);
+  countdownEl.textContent = `⏳ Faltan ${d}d ${h}h ${m}m ${s}s`;
+}
+const timer=setInterval(updateCountdown,1000);
+updateCountdown();
 
-  // Confeti + audio
-  const layer   = document.getElementById('emojiLayer');
-  const photo   = document.getElementById('photo');
-  const tapHint = document.getElementById('tapHint');
-  const audio   = document.getElementById('voice');
+const layer = document.getElementById('emojiLayer');
+const photo = document.getElementById('photo');
+const tapHint = document.getElementById('tapHint');
+const audio = document.getElementById('voice');
 
-  // “Desbloqueo” de audio en móviles (primer toque)
-  window.addEventListener('pointerdown', ()=> {
-    try{ audio.play().then(()=>audio.pause()); }catch(e){}
-  }, { once:true });
+function triggerMagic(){
+  rainEmojis(CONFIG.burstCount);
+  audio.currentTime = 0;
+  audio.play().catch(()=>{});
+}
 
-  function triggerMagic(){
-    rainEmojis(CONFIG.burstCount);
-    playVoice();
-    littleShake(photo);
+photo.addEventListener('click', triggerMagic);
+tapHint.addEventListener('click', triggerMagic);
+
+function rainEmojis(count){
+  const w = document.body.clientWidth;
+  for(let i=0;i<count;i++){
+    const span = document.createElement('span');
+    span.className='emoji';
+    span.textContent = CONFIG.EMOJIS[Math.floor(Math.random()*CONFIG.EMOJIS.length)];
+    span.style.left = Math.random()*w + 'px';
+    span.style.animationDuration = (5 + Math.random()*4) + 's';
+    layer.appendChild(span);
+    span.addEventListener('animationend', ()=> span.remove());
   }
-  photo.addEventListener('click', triggerMagic);
-  tapHint.addEventListener('click', triggerMagic);
-
-  function playVoice(){
-    try{ audio.currentTime = 0; audio.play().catch(()=>{}); }catch(e){}
-  }
-
-  function rainEmojis(count=60){
-    const w = document.body.clientWidth;
-    for(let i=0;i<count;i++){
-      const span = document.createElement('span');
-      span.className = 'emoji';
-      span.textContent = CONFIG.EMOJIS[Math.floor(Math.random()*CONFIG.EMOJIS.length)];
-      const left  = Math.random() * w;
-      const delay = Math.random() * 1200;
-      const dur   = 6200 + Math.random()*3600; // 6.2–9.8s
-      span.style.left = left + 'px';
-      span.style.setProperty('--r', (Math.random()*100-50) + 'deg');
-      span.style.animation = `fallDown ${dur}ms ease-in-out forwards`;
-      span.style.animationDelay = `${delay}ms`;
-      layer.appendChild(span);
-      span.addEventListener('animationend', ()=> span.remove());
-    }
-  }
-
-  function littleShake(el){
-    el.animate(
-      [
-        { transform: 'scale(1) rotate(0deg)' },
-        { transform: 'scale(1.03) rotate(-2deg)' },
-        { transform: 'scale(1.03) rotate(2deg)' },
-        { transform: 'scale(1) rotate(0deg)' }
-      ],
-      { duration: 420, easing: 'ease-out' }
-    );
-  }
+}
 </script>
 </body>
 </html>
